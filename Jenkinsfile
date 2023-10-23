@@ -4,6 +4,11 @@ pipeline {
         jdk 'java17'
         maven 'maven3'
     }
+    environment {
+        APP_NAME = "register_app"
+        DOCKER_USER = "thendralsathis"
+        IMAGE_NAME = "${DOCKER_USER}"+"/"+"${APP_NAME}"
+    }
     stages {
         stage ("workspace cleanup") {
             steps {
@@ -44,7 +49,7 @@ pipeline {
         stage ("docker image build") {
             steps {
                 script {
-                    sh "docker build -t new ."
+                    sh "docker build -t "${IMAGE_NAME}" ."
                 }
             }
         }
