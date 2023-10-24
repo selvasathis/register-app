@@ -1,9 +1,9 @@
 pipeline {
     agent { label 'jenkins-agent'}
-    // tools {
-    //     jdk 'java17'
-    //     maven 'maven3'
-    // }
+    tools {
+        jdk 'java17'
+        maven 'maven3'
+    }
     environment {
         APP_NAME = "register_app"
         DOCKER_USER = "thendralsathis"
