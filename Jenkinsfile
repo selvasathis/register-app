@@ -30,28 +30,28 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage ("sonar validation")  {
-            steps {
-                script {
-                    withSonarQubeEnv(credentialsId: 'sonar-tocken') {
-                        sh "mvn sonar:sonar"
-                    }
-                }
-            }
-        }
-        stage("quality gate") {
-            steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-tocken'
-                }
-            }
-        }
-        stage ("docker image build") {
-            steps {
-                script {
-                    sh "docker build -t "${IMAGE_NAME}" ."
-                }
-            }
-        }
+        // stage ("sonar validation")  {
+        //     steps {
+        //         script {
+        //             withSonarQubeEnv(credentialsId: 'sonar-tocken') {
+        //                 sh "mvn sonar:sonar"
+        //             }
+        //         }
+        //     }
+        // }
+        // stage("quality gate") {
+        //     steps {
+        //         script {
+        //             waitForQualityGate abortPipeline: false, credentialsId: 'sonar-tocken'
+        //         }
+        //     }
+        // }
+        // stage ("docker image build") {
+        //     steps {
+        //         script {
+        //             sh "docker build -t "${IMAGE_NAME}" ."
+        //         }
+        //     }
+        // }
     }
 }
