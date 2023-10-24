@@ -17,7 +17,7 @@ pipeline {
         }
         stage ("checkout from scm") {
             steps {
-                git branch: 'main', credentialsId: 'githubpasswd', url: 'https://github.com/selvasathis/register-app.git'
+                git branch: 'main', credentialsId: 'githubpswd', url: 'https://github.com/selvasathis/register-app.git'
             }
         }
         stage ("build app") {
