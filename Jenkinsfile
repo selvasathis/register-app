@@ -31,15 +31,15 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        // stage ("sonar validation")  {
-        //     steps {
-        //         script {
-        //             withSonarQubeEnv(credentialsId: 'sonar-tocken') {
-        //                 sh "mvn sonar:sonar"
-        //             }
-        //         }
-        //     }
-        // }
+        stage ("sonar validation")  {
+            steps {
+                script {
+                    withSonarQubeEnv(credentialsId: 'sonar-tocken') {
+                        sh "mvn sonar:sonar"
+                    }
+                }
+            }
+        }
         // stage("quality gate") {
         //     steps {
         //         script {
